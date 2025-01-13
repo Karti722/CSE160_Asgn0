@@ -52,9 +52,21 @@ function handleDrawEvent(event) {
 
 function handleDrawOperationEvent(event) {
 
+
+
+    scalar = document.getElementById("scalar").value;
+    op = document.getElementById("operation").value;
+
+    if (!scalar && (op == "multiply" || op == "divide")) {
+        console.log("NEED SCALAR!");
+        event.preventDefault();
+        return;
+    }
+
     var canvas = document.getElementById('example');
     if (!canvas) {
         console.log('Failed to retrieve the <canvas> element');
+        event.preventDefault();
         return;
     }
 
@@ -82,10 +94,7 @@ function handleDrawOperationEvent(event) {
     drawVector(v2, "blue");
    
     let v3 = new Vector3([v1_x, v1_y, 0]);
-    op = document.getElementById("operation").value;
-    scalar = document.getElementById("scalar").value;
 
-    console.log(op);
     if (op == "addition") {
         v3.add(v2);
         drawVector(v3, "green");
@@ -95,20 +104,12 @@ function handleDrawOperationEvent(event) {
         drawVector(v3, "green");
     }
     else if (op == "multiply") {
-        if (!scalar) {
-            console.log("NEED SCALAR!");
-            return;
-        }
         v1.mul(scalar);
         v2.mul(scalar);
         drawVector(v1, "green");
         drawVector(v2, "green");
     }
     else if (op == "divide") {
-        if (!scalar) {
-            console.log("NEED SCALAR!");
-            return;
-        }
         v1.div(scalar);
         v2.div(scalar);
         drawVector(v1, "green");
@@ -121,6 +122,17 @@ function handleDrawOperationEvent(event) {
     else if (op == "normalize") {
         drawVector(v1.normalize(), "green");
         drawVector(v2.normalize(), "green");
+    }
+    else if (op == "angle_between") {
+        let dot_product = Vector3.dot(v1, v2);
+        // console.log("dot_product: " + dot_product);
+        let v1_mag = v1.magnitude();
+        // console.log("v1_mag: " + v1_mag);
+        let v2_mag = v2.magnitude();
+        // console.log("v2_mag: " + v2_mag);
+        let fraction = dot_product / (v1_mag * v2_mag);
+        let result = Math.acos(fraction)* (180 / Math.PI); 
+        console.log(result);
     }
 
 
