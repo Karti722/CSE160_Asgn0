@@ -116,8 +116,8 @@ function handleDrawOperationEvent(event) {
         drawVector(v2, "green");
     }
     else if (op == "magnitude") {
-        console.log(v1.magnitude());
-        console.log(v2.magnitude());
+        console.log("Magnitude v1: " + v1.magnitude());
+        console.log("Magnitude v2: " + v2.magnitude());
     }
     else if (op == "normalize") {
         drawVector(v1.normalize(), "green");
