@@ -125,14 +125,17 @@ function handleDrawOperationEvent(event) {
     }
     else if (op == "angle_between") {
         let dot_product = Vector3.dot(v1, v2);
-        // console.log("dot_product: " + dot_product);
         let v1_mag = v1.magnitude();
-        // console.log("v1_mag: " + v1_mag);
         let v2_mag = v2.magnitude();
-        // console.log("v2_mag: " + v2_mag);
         let fraction = dot_product / (v1_mag * v2_mag);
         let result = Math.acos(fraction)* (180 / Math.PI); 
         console.log(result);
+    }
+    else if (op == "area") {
+        // ||v1 x v2||
+        let cross_product = Vector3.cross(v1, v2);
+        let area = cross_product.magnitude() / 2; 
+        console.log("Area of the Triangle: " + area);
     }
 
 
