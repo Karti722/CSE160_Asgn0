@@ -7,6 +7,9 @@ Kartikeya Kumaria
 # CruzID:
 kkumaria or 2026632
 
+# Student email
+kkumaria@ucsc.edu
+
 # Academic Integrity
 I used ChatGPT for the Vector3 Cross function and StackOverflow for the event.preventDefault() to prevent the site from reloading after drawing a vector. The rest of the code was written by me otherwise.
 
